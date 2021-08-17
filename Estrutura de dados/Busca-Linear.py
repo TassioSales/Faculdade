@@ -1,4 +1,6 @@
 """
+Alunos: Tássio Sales, Pedro Magalhaes, Robson Luiz 
+
 Busca Linear - Procurando livros em biblioteca desorganizada
    Entrada: 
             livros:     arranjo
@@ -26,6 +28,9 @@ def busca_linear(livros,qtd_livros,procurado):
 
 livros = ['shakespeare','machado de assis','lima barreto','charles dickens']
 qtd_livros = 4
-procurado = 'lima barreto'
+procurado = 'barreto'
 resposta = busca_linear(livros,qtd_livros,procurado)
-print(f"O livro {procurado} esta na posição {resposta}")
+if resposta == -1:
+    print("Livro não encontrado")
+else:
+    print(f"O livro {procurado} esta na posição {resposta}")
