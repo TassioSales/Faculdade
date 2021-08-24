@@ -11,25 +11,24 @@ Busca Linear - Procurando livros em biblioteca desorganizada
     PSEUDO-CÓDIGO:
         resposta = NOT_FOUND
         para cada i indo de 1ª a qtd_livros em ordem:
-            se livros[i]== procurado então resposta=i
+            se livros[i]== procurado então resposta = i
         return resposta
     Complexidade:
         O(n) tempo
         pior caso 
 """
-#def busca_linear(livros,qtd_livros,procurado):
+#def busca_linear(livros,procurado):
 #    resposta = -1
-def busca_linear(livros,qtd_livros,procurado):
+def busca_linear(livros,procurado):
     retorno = -1
-    for i in range(qtd_livros):
+    for i in range(len(livros)):
         if livros[i] == procurado:
             retorno = i
     return retorno        
 
 livros = ['shakespeare','machado de assis','lima barreto','charles dickens']
-qtd_livros = 4
-procurado = 'barreto'
-resposta = busca_linear(livros,qtd_livros,procurado)
+procurado = 'texto2'
+resposta = busca_linear(livros,procurado)
 if resposta == -1:
     print("Livro não encontrado")
 else:
