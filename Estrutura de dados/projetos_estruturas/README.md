@@ -1,6 +1,6 @@
 <h1>Os projetos aqui criados são da materia de Analíse de Algoritmos</h1>
 
-<p>Ministrada pelo professso: <a>Rodrigo Otávio Ribeiro Hagstrom</a></p>
+<p>Ministrada pelo professso: <a href = "https://github.com/RodrigoHagstrom">Rodrigo Otávio Ribeiro Hagstrom</a></p>
 
 <h2>Analíse de Algoritmo</h2>
 
