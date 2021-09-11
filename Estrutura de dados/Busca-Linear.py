@@ -17,18 +17,21 @@ Busca Linear - Procurando livros em biblioteca desorganizada
         O(n) tempo
         pior caso 
 """
-#def busca_linear(livros,procurado):
+
+
+# def busca_linear(livros,procurado):
 #    resposta = -1
-def busca_linear(livros,procurado):
+def busca_linear(livros, procurado):
     retorno = -1
     for i in range(len(livros)):
         if livros[i] == procurado:
             retorno = i
-    return retorno        
+    return retorno
 
-livros = ['shakespeare','machado de assis','lima barreto','charles dickens']
-procurado = 'texto2'
-resposta = busca_linear(livros,procurado)
+
+livros = ['shakespeare', 'machado de assis', 'lima barreto', 'charles dickens']
+procurado = 'lima barreto'
+resposta = busca_linear(livros, procurado)
 if resposta == -1:
     print("Livro não encontrado")
 else:
