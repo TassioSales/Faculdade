@@ -14,3 +14,8 @@ Os algoritmos são estudados por meio de análise matemática. As leis do cálcu
   <li><a href = "https://github.com/pedromag1993">Pedro Magalhaes</a></li>
   <li><a href = "https://github.com/robsonluis1608">Robson Luis</a></li>
 </ol>
+
+<h2>Projetos</h2>
+<ol>
+  <li><a href ="https://github.com/TassioSales/Faculdade/tree/master/Estrutura%20de%20dados/projetos_estruturas/Busca_linear">Busca Linear</a></li>
+</ol>
