@@ -18,4 +18,7 @@ Os algoritmos são estudados por meio de análise matemática. As leis do cálcu
 <h2>Projetos</h2>
 <ol>
   <li><a href ="https://github.com/TassioSales/Faculdade/tree/master/Estrutura%20de%20dados/projetos_estruturas/Busca_linear">Busca Linear</a></li>
+  <li><a href ="https://github.com/TassioSales/Faculdade/tree/master/Estrutura%20de%20dados/projetos_estruturas/BFS%20e%20DFS">Pesquisa em profundidade e pesquisa em largura</a></li>
+  <li><a href ="https://github.com/TassioSales/Faculdade/tree/master/Estrutura%20de%20dados/projetos_estruturas/MargeSort_and_QuikSort">MargeSort_and_QuikSort</a></li>
+  <li><a href ="https://github.com/TassioSales/Faculdade/tree/master/Estrutura%20de%20dados/projetos_estruturas/Caixeiro_Viajante">Caixeiro Viajante</a></li>
 </ol>
