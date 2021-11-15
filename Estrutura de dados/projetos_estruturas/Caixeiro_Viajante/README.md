@@ -32,4 +32,4 @@
     as opções:
 </p>
 
-<img src="tabela_caixeiro.png">
+<img src="img/tabela_caixeiro.png">
