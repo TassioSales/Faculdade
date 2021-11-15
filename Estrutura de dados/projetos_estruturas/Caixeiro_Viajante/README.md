@@ -33,3 +33,10 @@
 </p>
 
 <img src="img/tabela_caixeiro.png">
+
+
+<p>
+    Utilizar algoritmos genéticos para estabelecer a melhor rota de modo a atender ao
+    problema do Caixeiro Viajante. Ele deve percorrer todas as cidades, sem repetir
+    nenhuma delas e voltar para a cidade de origem, com o menor tempo possível.
+</p>
