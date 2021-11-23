@@ -1,6 +1,5 @@
 import time
 
-
 def fibonacci_sequence_of_linear(num):
     first_number = 0
 
