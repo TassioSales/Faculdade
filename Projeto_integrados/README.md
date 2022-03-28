@@ -24,9 +24,9 @@ A segunda parte é dedicada a estudar a volatilidade (retorno) dos ativos financ
 
 A terceira parte é onde analisaremos o IBOVESPA, seus preços e volatilidade, e comparando com os ativos antes estudados. Verificaremos as correlações utilizando a descrição e a visualização
 
-Por último, vamos concluir nossa análise fazendo um apanhado geral sobre o contexto atual da pandemia.</p>3
+Por último, vamos concluir nossa análise fazendo um apanhado geral sobre o contexto atual da pandemia.</p>
 
-<h2>Conclusão<h2>
+<h2>Conclusão</h2>
  
 <p>Conclusão Baseado na análise desse projeto, podemos concluir o que já era sabido: a crise do coronavírus abalou o mercado financeiro, causou desespero por um determinado período, mas desde então se acalmou. Olhando as métricas, podemos ver que a bolsa de valores acompanhou o preço e a volatilidade de alguns ativos, ambos caindo no mesmo período, o período de maior incerteza e desinformação.
 
