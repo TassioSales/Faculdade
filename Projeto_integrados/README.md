@@ -4,7 +4,7 @@
 
 <img src='bolsacovid19.jpg'>
 
-<h2>Uma análise exploratória de dados de 4 ativos financeiros e do IBOVESPA no ano de 2020</h2>
+<h2>Introdução</h2>
 
 <p>A pandemia do Coronavírus vem deixando marcas de tragédias em muitas famílias, empresas e países. Isso não diferiria no mercado financeiro, onde a expectativa influencia as tomadas de decisão. Mudanças políticas, catástrofes mundiais, pandemias podem mudar as expectativas dos investidores sobre o futuro de alguns ativos financeiros, bolsas e empresas.
 
