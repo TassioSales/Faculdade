@@ -29,3 +29,12 @@ cp * /var/www/html/
 
 #Etapa 06 - Entrando na pasta (/var/www/html/)
 cd /var/www/html/
+
+#Etapa 07 - Removendo arquivo index.html da pasta
+rm index.html
+
+#Etapa 08 - Renomeando arquivo (cv-resumido.html para index.html)
+mv cv-resumido.html index.html
+
+#Etapa 09 - Iniciando servidor web Apache
+/etc/init.d/apache2 start
