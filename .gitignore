@@ -2,4 +2,17 @@
 fazendo amostragem/base_gasolina.csv
 fazendo amostragem/base_gasolina.zip
 *.tgz
-*.csv
+<<<<<<< HEAD
+Processamento de dados massivos/spark/202202_Cadastro.csv
+Processamento de dados massivos/analise_enem/MICRODADOS_ENEM_2020.csv
+Machine Larning/Analise Titanic/titanic3.csv
+Machine Larning/Analise Titanic/titanic3.csv
+Machine Larning/50_Startups_2/50_Startups.csv
+Machine Larning/50_Startups_2/housing.csv
+Machine Larning/Analise Titanic/titanic3.csv
+Processamento de dados massivos/covid_analise/vacinacaoAC/part-00000-d7c6e6d7-a86a-460b-b934-63e3be804175.c000.csv
+Processamento de dados massivos/covid_analise/vacinacaoAC/part-00001-d7c6e6d7-a86a-460b-b934-63e3be804175.c000.csv
+Processamento de dados massivos/covid_analise/vacinacaoAC/part-00002-d7c6e6d7-a86a-460b-b934-63e3be804175.c000.csv
+
+=======
+>>>>>>> parent of 533d74c (atualização de arquivos)
