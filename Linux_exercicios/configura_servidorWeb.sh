@@ -20,4 +20,12 @@ wget https://gist.github.com/nunomazer/873219/archive/690e1f604dc8ead2583589e1ae
 apt-get install -y zip unzip
 # Descompacta o arquivo zip
 unzip 690e1f604dc8ead2583589e1aee6f8a42040a035.zip
+
 # Entra na pasta descompactada
+cd 873219-690e1f604dc8ead2583589e1aee6f8a42040a035 
+
+# Copia os arquivos para outro diretório
+cp * /var/www/html/
+
+#Etapa 06 - Entrando na pasta (/var/www/html/)
+cd /var/www/html/
