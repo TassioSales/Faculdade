@@ -2,6 +2,7 @@
 fazendo amostragem/base_gasolina.csv
 fazendo amostragem/base_gasolina.zip
 *.tgz
+*.csv
 <<<<<<< HEAD
 Processamento de dados massivos/spark/202202_Cadastro.csv
 Processamento de dados massivos/analise_enem/MICRODADOS_ENEM_2020.csv
