@@ -1,67 +1,108 @@
 ```{r}
-data(JohnsonJohnson)
-```
-
-```{r}
-JohnsonJohnson
-```
-
-```{r}
-start(JohnsonJohnson)
-```
-
-```{r}
-end(JohnsonJohnson)
-```
-
-```{r}
-class(JohnsonJohnson)
-```
-
-```{r}
-plot(JohnsonJohnson)
-```
-
-```{r}
-plot(JohnsonJohnson, main='Lucro trimestral por ação da Johnson & Johnson', col='blue', lwd=3)
-```
-
-```{r}
-bibliotecas = c('forecast', 'fpp2', 'readxl')
-install.packages(bibliotecas)
-```
-
-```{r}
-library(forecast)
 library(fpp2)
-library(readxl)
-autoplot(gold)
+library(tidyverse)
+library(forecast)
+library(datasets)
 ```
 
 ```{r}
-autoplot(JohnsonJohnson)
-decompose2 <- decompose(JohnsonJohnson)
-autoplot(decompose2)
-
+autoplot(taylor)                             
 ```
 
 ```{r}
-ggseasonplot(JohnsonJohnson)
+log_data_series <- log(taylor)
+data_forecast <- HoltWinters(log_data_series)
+data_forecast
+plot(data_forecast)
 ```
 
 ```{r}
-autoplot(JohnsonJohnson)
-decompair <- decompose(JohnsonJohnson, type='additive')
+data_forecast_extended <- forecast(data_forecast, h = 60)
+plot(data_forecast_extended)
+residuals <- data_forecast_extended$residuals
+residuals <- residuals[!is.na(residuals)]
+```
+
+```{r}
+acf(residuals, lag.max=20)
+Box.test
+```
+
+```{r}
+plot.ts(residuals)
+```
+
+```{r}
+qqnorm(residuals);qqline(residuals, col = 2)
+```
+
+```{r}
+decompJohnsonJohnson<-decompose(JohnsonJohnson)
+autoplot(decompJohnsonJohnson)
+```
+
+```{r}
+decompair<-decompose(JohnsonJohnson,type='additive')
 plot(decompair)
-ggseasonplot(JohnsonJohnson)
 ```
 
 ```{r}
-getwd()
+ggseasonplot(JohnsonJohnson)
+```
 
-setwd()
+### **Suavização Exponencial Simples (SES)**
 
-library(readxl)
+##### **Dataset JohnsonJohnson dados Quadrimestrais medidos de 1960 a 1980.**
 
+##### **Modelo 1 : Previsão SES para os próximos 5 anos**
 
+```{r}
+autoplot(JohnsonJohnson)
+mdl1 <- ses(JohnsonJohnson, h = 16) 
+mdl1$model
+autoplot(mdl1)
+```
+
+##### **Modelo 2 : Previsão holt para os próximos 10 anos**
+
+```{r}
+mdl2 <- holt(JohnsonJohnson, h = 16) 
+autoplot(mdl2)
+```
+
+##### **Modelo 3 : Decomposição de séries temporais aditivas**
+
+```{r}
+autoplot(JohnsonJohnson) + ylab("JohnsonJohnson dados Quadrimestrais")
+decompJohnsonJohnson <- decompose(JohnsonJohnson)
+autoplot(decompJohnsonJohnson)
+```
+
+##### **Modelo 4 : Forecasts from Hot_Winters' additive method - 10 anos**
+
+```{r}
+mdladitivo_JohnsonJohnson <- hw(JohnsonJohnson, seasonal = "additive", h=36)
+autoplot(mdladitivo_JohnsonJohnson)
+```
+
+##### **Modelo 5 : Forecasts from Hot_Winters' multiplicative method - 10 anos**
+
+```{r}
+mdlmultiplicativo_JohnsonJohnson <- hw(JohnsonJohnson, seasonal = "multiplicative", h=36)
+autoplot(mdlmultiplicativo_JohnsonJohnson)
+```
+
+**Modelo 6: Forecasts from Hot_Winters' additive and multiplicative method - 10 anos**
+
+```{r}
+mdladitivo_JohnsonJohnson <- hw(JohnsonJohnson, seasonal = "additive", h=36, PI=F)
+mdlmultiplicativo_JohnsonJohnson <- hw(JohnsonJohnson, seasonal = "multiplicative", h=36, PI=F)
+
+autoplot(JohnsonJohnson) + ylab("JohnsonJohnson dados Quadrimestrais") +
+  autolayer(mdladitivo_JohnsonJohnson, series = "HW Add.") + 
+  autolayer(mdlmultiplicativo_JohnsonJohnson, series = "HW Mult.")
+```
+
+```{r}
+data()
 ```

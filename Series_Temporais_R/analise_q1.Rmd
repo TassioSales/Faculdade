@@ -1,0 +1,34 @@
+```{r}
+# Dataset do R
+#data()
+JohnsonJohnson
+```
+
+```{r}
+start(JohnsonJohnson) # onde a serie temporal inicia
+end(JohnsonJohnson) # onde a s?rie temporal termina
+class(JohnsonJohnson) # informa a classe dos dados
+```
+
+```{r}
+plot(JohnsonJohnson)
+```
+
+```{r}
+aggregate(JohnsonJohnson, nfrequency = 4, FUN = sum) # somas trimestrais
+
+```
+```{r}
+aggregate(JohnsonJohnson, nfrequency = 1, FUN = mean) # medias anuais
+```
+
+```{r}
+# Por meses
+monthplot(JohnsonJohnson, col.base = 2, labels = month.abb)
+```
+
+```{r}
+# Extraindo uma janela
+janela<-window(JohnsonJohnson, start=c(1965), end=(1975))
+janela
+```

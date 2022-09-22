@@ -1,0 +1,89 @@
+Selecionando apenas uma série temporal deste conjunto de dados. Estou selecionando o consumo de energia para a Duquesne Light Company, que opera principalmente em Pittsburgh e arredores, como visto aqui.
+
+Visualizando a série temporal Para começar, vou ler os dados, manipulá-los um pouco e visualizar a série temporal. Para facilitar a visualização e minimizar o tempo de processamento necessário, estou restringindo os dados para 2012-17.
+
+```{r}
+duq <- read.csv('arquivos/DUQ_hourly.csv', stringsAsFactors = F)
+head(duq,10)
+duq$Datetime <- as.POSIXct(duq$Datetime, '%Y-%m-%d %H:%M:%S', tz = "Asia/Seoul")
+duq <- duq[duq$Datetime >= '2012-10-01 00:00:00' & duq$Datetime <= '2017-09-30 00:00:00',]
+library(ggplot2)
+```
+
+\
+
+```{r}
+ggplot(data = duq, aes(x = Datetime, y = DUQ_MW))+
+      geom_line(color = "#00AFBB", size = 0.5) + ggtitle('Duquesne Power - Consumption, 2012-2017')+
+    xlab('Date') + ylab('Consumption in MW')
+```
+Para visualizar um pouco melhor a sazonalidade da série, veja o consumo de energia apenas para 2014:
+
+
+```{r}
+ggplot(data = duq[duq$Datetime >= '2014-01-01' & duq$Datetime <= '2014-12-31',], aes(x = Datetime, y = DUQ_MW))+
+      geom_line(color = "#00AFBB", size = 0.5) + ggtitle('Duquesne Power - Consumption, 2014')+
+    xlab('Date') + ylab('Consumption in MW')
+```
+É importante notar como o consumo de energia aumenta tanto nos meses de verão de maio a setembro como nos dias de inverno de novembro até cerca de fevereiro. Isso provavelmente se deve ao fato de as pessoas usarem eletricidade para resfriamento e aquecimento, respectivamente. Pode ser útil mais tarde.
+
+
+O desafio
+
+Como Hyndman menciona em seu livro, o principal desafio introduzido pelas séries temporais sub-semanais é a sazonalidade múltipla. Por exemplo, apenas com esta série temporal horária, pelo menos as seguintes sazonalidades podem estar presentes:
+
+
+1 - As pessoas podem usar a maioria de seus aparelhos em determinadas horas do dia, resultando em sazonalidade diária do consumo de energia
+
+2 - As pessoas podem usar a eletricidade de forma diferente durante a semana e fins de semana, resultando em sazonalidade semanal
+
+3 - As pessoas podem usar a eletricidade de forma diferente em diferentes épocas do ano, resultando em sazonalidade anual
+
+
+Claro, alguns fatores mais desconhecidos também podem estar presentes, acrescentando outros aspectos da sazonalidade. O objeto ts() comum em R não pode lidar com várias sazonalidades, então vou usar msts() do pacote de previsão.
+
+
+```{r}
+library(forecast)
+library(lubridate)
+duq_train <- duq[duq$Datetime <= '2017-08-31',]
+duq_test <- duq[duq$Datetime >= '2017-09-01',]
+msts_power <- msts(duq_train$DUQ_MW, seasonal.periods = c(24,169,24*365.25), start=decimal_date(as.POSIXct("2012-10-01 00:00:00")))
+
+```
+
+Antes de passar pelas soluções sugeridas, vamos estabelecer uma linha de base para nossa previsão. A estimativa aproximada mais fácil para qualquer previsão seria simplesmente a média dos valores observados. Então, depois de selecionar tudo, exceto o último mês como conjunto de treinamento, vamos estabelecer a média como linha de base.
+
+
+```{r}
+mean_baseline <- meanf(msts_power,h = 24*31)
+autoplot(mean_baseline)+geom_line(color = "#00AFBB", size = 0.5) + ggtitle('Duquesne Power - Consumption, 2014')+
+    xlab('Date') + ylab('Consumption in MW')
+accuracy(mean_baseline,duq_test$DUQ_MW)
+
+```
+
+Vou usar o RMSE como métrica para comparar diferentes modelos. O RMSE da previsão de linha de base aqui é 323 e o MAE é 268,8. Se meu modelo tiver um desempenho pior do que isso, tudo isso não valerá a pena fazer.
+
+Forecasting
+
+1 - Modelos TBATS
+2 - MSTL - Decomposição STL com múltiplas sazonalidades
+3 - Regressão harmônica dinâmica com vários períodos
+4 - Como usar covariáveis
+
+
+Vou tentar estes um por um, e então tentar prever usando o pacote prophet em R, apenas para verificar o quão bem isso funciona.
+
+1. TBATS
+
+TBATS é um modelo que combina suavização exponencial, sazonalidade trigonométrica, transformação Box-Cox e modelo ARMA para resíduos.
+
+```{r}
+tbats_power <- tbats(msts_power)
+f_tbats <- forecast(tbats_power, h = 24*31)
+autoplot(f_tbats) +ggtitle('Duquesne Power - Forecast, 2016-17')+
+    xlab('Date') + ylab('Consumption in MW')
+accuracy(f_tbats,duq_test$DUQ_MW)
+```
+
