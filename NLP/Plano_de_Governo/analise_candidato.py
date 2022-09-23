@@ -361,5 +361,5 @@ def wordcloub_final():
     fig.update_layout(height=800, width=1800, title_text="Palavras mais frequentes")
     fig.show()
 
-
-    
+if __name__ == '__main__':
+    menu()
