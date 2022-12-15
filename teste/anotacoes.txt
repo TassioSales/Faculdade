@@ -1,6 +1,0 @@
-def conta_valore_nulos(lista_df, lista_nomes):
-    tot = 0
-    for item in lista_df:
-        tot == item.isnull().sum().sum()
-    for nome in lista_nomes:
-        print(nome, 'total de valores nulos:', tot)
